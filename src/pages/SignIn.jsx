@@ -1,5 +1,5 @@
 import { useState } from 'react'
-//import { toast } from 'react-toastify'
+import { toast } from 'react-toastify'
 import { Link, useNavigate } from 'react-router-dom'
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 //import OAuth from '../components/OAuth'
@@ -23,13 +23,41 @@ function SignIn() {
     }))
 
   }
+
+  const onSubmit=async (e) =>{
+    e.preventDefault()
+
+    try {
+
+      const auth = getAuth();
+      const userCredential=  await signInWithEmailAndPassword(auth, email, password)
+      
+      const user= userCredential.user
+      console.log(user)
+
+      if(userCredential.user){
+        navigate('/profile')
+      }
+
+      
+
+    } catch (error) {
+
+      const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorMessage)
+    toast.error('Wrong Email or password')
+      
+    }
+
+  }
   return (
    <>
    <div className="pageContainer">
     <header>
         <p className="pageHeader">Welcome Back!</p>
     </header>
-    <form>
+    <form onSubmit={onSubmit}>
         <input type="email" className='emailInput' placeholder='Email' name="" id="email" value={email}
         onChange={onChange} />
         <div className="passwordInputDiv">
