@@ -32,8 +32,8 @@ function SignIn() {
       const auth = getAuth();
       const userCredential=  await signInWithEmailAndPassword(auth, email, password)
       
-      const user= userCredential.user
-      console.log(user)
+      // const user= userCredential.user
+      // console.log(user)
 
       if(userCredential.user){
         navigate('/profile')
