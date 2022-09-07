@@ -3,9 +3,8 @@ import { toast } from 'react-toastify'
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth"
 import { doc, setDoc, serverTimestamp } from 'firebase/firestore'
 import { db } from '../firebase.config'
-//import { toast } from 'react-toastify'
 import { Link, useNavigate } from 'react-router-dom'
-
+import OAuth from '../components/OAuth'
 import { ReactComponent as ArrowRightIcon } from '../assets/svg/keyboardArrowRightIcon.svg'
 import visibilityIcon from '../assets/svg/visibilityIcon.svg'
 
@@ -87,10 +86,10 @@ function SignUp() {
           </div>
     </form>
 
+      <OAuth />
 
-
-    <Link to='/sign-in' className='registerLink'>
-          Have Account? Sign In
+    <Link to='/sign-in' className=''>
+          <h4>Have Account? Sign In</h4>
         </Link>
 
    </div>
