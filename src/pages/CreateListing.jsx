@@ -180,7 +180,7 @@ function CreateListing() {
     setLoading(false)
     toast.success('Listing saved')
     //navigate(`/category/${formDataCopy.type}/${docRef.id}`)
-    navigate(`category/${formDataCopy.type}`)
+    navigate('/')
   }
 
   const onMutate = (e) => {
